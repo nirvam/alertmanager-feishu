@@ -33,5 +33,8 @@ USER appuser
 # Expose port
 EXPOSE 8080
 
+# Set environment PATH to use the virtualenv
+ENV PATH="/app/.venv/bin:$PATH"
+
 # Run the application
-ENTRYPOINT ["uv", "run", "alertmanager-feishu", "serve"]
+ENTRYPOINT ["alertmanager-feishu", "serve"]

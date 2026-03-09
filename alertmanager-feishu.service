@@ -1,0 +1,17 @@
+[Unit]
+Description=Alertmanager Feishu Webhook Service
+After=network.target
+
+[Service]
+Type=simple
+User=alertmanager-feishu
+Group=alertmanager-feishu
+WorkingDirectory=/opt/alertmanager-feishu
+EnvironmentFile=/etc/alertmanager-feishu/env
+ExecStart=/opt/alertmanager-feishu/.venv/bin/python -m src.alertmanager_feishu serve
+Restart=on-failure
+ProtectSystem=full
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
